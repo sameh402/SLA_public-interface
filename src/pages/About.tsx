@@ -374,6 +374,7 @@ export default function About() {
                 <div className="md:flex items-center">
                   <div className="md:w-1/3 bg-gradient-to-br from-orange-500/10 to-red-600/10 p-8 flex items-center justify-center">
                     <div className="text-center">
+                      <Heart className="h-12 w-12 mx-auto mb-4 text-primary" />
                       <h3 className="text-2xl font-bold text-primary mb-2">
                         Why We Exist
                       </h3>
