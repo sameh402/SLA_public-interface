@@ -489,6 +489,15 @@ export default function Contact() {
                 size="lg"
                 variant="outline"
                 className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    const faqSection = document.getElementById("faq");
+                    if (faqSection) {
+                      faqSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }, 100);
+                }}
               >
                 <AlertCircle className="mr-2 h-5 w-5" />
                 {t("contact.help.faq")}
