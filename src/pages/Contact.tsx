@@ -490,7 +490,12 @@ export default function Contact() {
                 variant="outline"
                 className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
                 onClick={() => {
-                  navigate("/#faq");
+                  // First navigate to home page
+                  navigate("/");
+                  // Use hash navigation for scrolling
+                  setTimeout(() => {
+                    window.location.hash = "faq";
+                  }, 100);
                 }}
               >
                 <AlertCircle className="mr-2 h-5 w-5" />
