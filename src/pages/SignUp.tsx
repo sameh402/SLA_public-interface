@@ -261,23 +261,13 @@ export function SignUpPage() {
               <div className="space-y-2">
                 <Label htmlFor="phoneNumber">WhatsApp Number</Label>
                 <div className="flex gap-2">
-                  <Select
+                  <CountryCodeSelector
                     value={formData.countryCode}
                     onValueChange={(value) =>
                       setFormData({ ...formData, countryCode: value })
                     }
-                  >
-                    <SelectTrigger className="w-28">
-                      <SelectValue placeholder="Code" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {countryCodes.map((country) => (
-                        <SelectItem key={country.code} value={country.code}>
-                          {country.code} ({country.name})
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    className="w-32"
+                  />
                   <Input
                     id="phoneNumber"
                     name="phoneNumber"
