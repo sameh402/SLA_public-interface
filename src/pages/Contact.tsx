@@ -483,25 +483,21 @@ export default function Contact() {
               {t("contact.help.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <MagneticButton>
-                <Button
-                  size="lg"
-                  className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
-                >
-                  <Headphones className="mr-2 h-5 w-5" />
-                  {t("contact.help.support")}
-                </Button>
-              </MagneticButton>
-              <MagneticButton>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
-                >
-                  <AlertCircle className="mr-2 h-5 w-5" />
-                  {t("contact.help.faq")}
-                </Button>
-              </MagneticButton>
+              <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
+              >
+                <Headphones className="mr-2 h-5 w-5" />
+                {t("contact.help.support")}
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
+              >
+                <AlertCircle className="mr-2 h-5 w-5" />
+                {t("contact.help.faq")}
+              </Button>
             </div>
           </AnimatedSection>
         </div>
