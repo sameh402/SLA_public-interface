@@ -349,49 +349,6 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      {/* Course Interest */}
-                      <div className="space-y-2">
-                        <Label htmlFor="course" className="text-sm font-medium">
-                          {t("contact.form.course")}
-                        </Label>
-                        <Select
-                          value={formData.course}
-                          onValueChange={(value) =>
-                            handleInputChange("course", value)
-                          }
-                        >
-                          <SelectTrigger className="h-11 bg-background/50 border-border/50">
-                            <Users className="mr-2 h-4 w-4" />
-                            <SelectValue
-                              placeholder={t("contact.form.course.placeholder")}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="advanced web development">
-                              تطوير الويب المتقدم
-                            </SelectItem>
-                            <SelectItem value="digital marketing mastery">
-                              إتقان التسويق الرقمي
-                            </SelectItem>
-                            <SelectItem value="data science fundamentals">
-                              أساسيات علوم البيانات
-                            </SelectItem>
-                            <SelectItem value="ui/ux design principles">
-                              مبادئ تصميم UI/UX
-                            </SelectItem>
-                            <SelectItem value="business analytics">
-                              تحليلات الأعمال
-                            </SelectItem>
-                            <SelectItem value="mobile app development">
-                              تطوير تطبيقات الهاتف المحمول
-                            </SelectItem>
-                            <SelectItem value="general inquiry">
-                              استفسار عام
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
                       {/* Message */}
                       <div className="space-y-2">
                         <Label
