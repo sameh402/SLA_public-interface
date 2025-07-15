@@ -262,35 +262,18 @@ export default function Contact() {
                         >
                           {t("contact.form.nationality")} *
                         </Label>
-                        <Select
+                        <Input
+                          id="nationality"
                           value={formData.nationality}
-                          onValueChange={(value) =>
-                            handleInputChange("nationality", value)
+                          onChange={(e) =>
+                            handleInputChange("nationality", e.target.value)
                           }
+                          placeholder={t(
+                            "contact.form.nationality.placeholder",
+                          )}
+                          className="h-11 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                           required
-                        >
-                          <SelectTrigger className="h-11 bg-background/50 border-border/50">
-                            <Globe className="mr-2 h-4 w-4" />
-                            <SelectValue
-                              placeholder={t(
-                                "contact.form.nationality.placeholder",
-                              )}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="egypt">🇪🇬 مصر</SelectItem>
-                            <SelectItem value="saudi">
-                              🇸🇦 المملكة العربية السعودية
-                            </SelectItem>
-                            <SelectItem value="uae">
-                              🇦🇪 الإمارات العربية المتحدة
-                            </SelectItem>
-                            <SelectItem value="jordan">🇯🇴 الأردن</SelectItem>
-                            <SelectItem value="lebanon">🇱🇧 لبنان</SelectItem>
-                            <SelectItem value="kuwait">🇰🇼 الكويت</SelectItem>
-                            <SelectItem value="other">🌍 أخرى</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        />
                       </div>
 
                       {/* Email */}
