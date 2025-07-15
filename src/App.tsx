@@ -18,6 +18,7 @@ import { SignUpPage } from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
