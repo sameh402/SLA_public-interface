@@ -301,24 +301,13 @@ export default function Contact() {
                           {t("contact.form.phone")} *
                         </Label>
                         <div className="flex gap-2">
-                          <Select
+                          <CountryCodeSelector
                             value={formData.phoneCode}
                             onValueChange={(value) =>
                               handleInputChange("phoneCode", value)
                             }
-                          >
-                            <SelectTrigger className="w-32 h-11 bg-background/50 border-border/50">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="+20">🇪🇬 +20</SelectItem>
-                              <SelectItem value="+966">🇸🇦 +966</SelectItem>
-                              <SelectItem value="+971">🇦🇪 +971</SelectItem>
-                              <SelectItem value="+962">🇯🇴 +962</SelectItem>
-                              <SelectItem value="+961">🇱🇧 +961</SelectItem>
-                              <SelectItem value="+965">🇰🇼 +965</SelectItem>
-                            </SelectContent>
-                          </Select>
+                            className="w-32 h-11 bg-background/50 border-border/50"
+                          />
                           <Input
                             id="phone"
                             type="tel"
