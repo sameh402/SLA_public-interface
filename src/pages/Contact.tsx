@@ -118,20 +118,6 @@ export default function Contact() {
       description: t("contact.info.phone.description"),
       color: "from-green-500 to-emerald-500",
     },
-    {
-      icon: MapPin,
-      title: t("contact.info.location.title"),
-      value: t("contact.info.location.value"),
-      description: t("contact.info.location.description"),
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: Headphones,
-      title: t("contact.info.support.title"),
-      value: t("contact.info.support.value"),
-      description: t("contact.info.support.description"),
-      color: "from-orange-500 to-red-500",
-    },
   ];
 
   const courses = [
