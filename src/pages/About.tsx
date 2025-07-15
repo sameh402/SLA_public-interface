@@ -350,6 +350,7 @@ export default function About() {
                 <div className="md:flex items-center">
                   <div className="md:w-1/3 bg-gradient-to-br from-green-500/10 to-emerald-600/10 p-8 flex items-center justify-center md:order-2">
                     <div className="text-center">
+                      <Eye className="h-12 w-12 mx-auto mb-4 text-primary" />
                       <h3 className="text-2xl font-bold text-primary mb-2">
                         Our Vision
                       </h3>
