@@ -394,20 +394,15 @@ export default function Contact() {
                     <p className="text-muted-foreground mb-4">
                       {t("contact.whatsapp.description")}
                     </p>
-                    <MagneticButton>
-                      <Button
-                        className="w-full bg-green-500 hover:bg-green-600 text-white"
-                        onClick={() =>
-                          window.open(
-                            `https://wa.me/${whatsappNumber}`,
-                            "_blank",
-                          )
-                        }
-                      >
-                        <MessageCircle className="mr-2 h-4 w-4" />
-                        {t("contact.whatsapp.number")}
-                      </Button>
-                    </MagneticButton>
+                    <Button
+                      className="w-full bg-green-500 hover:bg-green-600 text-white"
+                      onClick={() =>
+                        window.open(`https://wa.me/${whatsappNumber}`, "_blank")
+                      }
+                    >
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      {t("contact.whatsapp.number")}
+                    </Button>
                   </CardContent>
                 </Card>
 
