@@ -162,26 +162,22 @@ export default function Contact() {
             delay={100}
           >
             {contactInfo.map((info, index) => (
-              <MagneticButton key={index} intensity={5}>
-                <Card className="card-hover text-center bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 h-full">
+              <div key={index}>
+                <Card className="text-center bg-card/80 backdrop-blur-sm border-2 border-transparent h-full">
                   <CardContent className="p-6">
                     <div
-                      className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center text-white`}
                     >
-                      <FloatingElement>
-                        <info.icon className="h-8 w-8" />
-                      </FloatingElement>
+                      <info.icon className="h-8 w-8" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
-                      {info.title}
-                    </h3>
+                    <h3 className="text-lg font-semibold mb-2">{info.title}</h3>
                     <p className="font-medium mb-1">{info.value}</p>
                     <p className="text-sm text-muted-foreground">
                       {info.description}
                     </p>
                   </CardContent>
                 </Card>
-              </MagneticButton>
+              </div>
             ))}
           </StaggeredList>
         </div>
