@@ -381,7 +381,7 @@ export default function About() {
                     </div>
                   </div>
                   <CardContent className="md:w-2/3 p-8">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-loose">
                       We believe in the{" "}
                       <strong>power of education to change lives</strong>.
                       That's why we design
