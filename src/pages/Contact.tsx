@@ -53,6 +53,7 @@ interface FormData {
 export default function Contact() {
   const { t } = useI18n();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
