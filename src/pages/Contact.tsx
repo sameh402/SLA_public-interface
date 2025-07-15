@@ -353,26 +353,24 @@ export default function Contact() {
                       </div>
 
                       {/* Submit Button */}
-                      <MagneticButton>
-                        <Button
-                          type="submit"
-                          className="w-full h-12 btn-professional text-lg"
-                          disabled={!isFormValid() || isSubmitting}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="mr-3 h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
-                              {t("contact.form.sending")}
-                            </>
-                          ) : (
-                            <>
-                              <Send className="mr-3 h-5 w-5" />
-                              {t("contact.form.submit")}
-                              <Heart className="ml-3 h-5 w-5" />
-                            </>
-                          )}
-                        </Button>
-                      </MagneticButton>
+                      <Button
+                        type="submit"
+                        className="w-full h-12 btn-professional text-lg"
+                        disabled={!isFormValid() || isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <div className="mr-3 h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
+                            {t("contact.form.sending")}
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-3 h-5 w-5" />
+                            {t("contact.form.submit")}
+                            <Heart className="ml-3 h-5 w-5" />
+                          </>
+                        )}
+                      </Button>
                     </form>
                   </CardContent>
                 </Card>
