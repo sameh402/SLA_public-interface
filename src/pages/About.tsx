@@ -357,7 +357,7 @@ export default function About() {
                     </div>
                   </div>
                   <CardContent className="md:w-2/3 p-8 md:order-1">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-loose">
                       To be a <strong>trusted platform</strong> that transforms
                       education through <strong>innovation</strong>. We envision
                       a world where everyone can learn{" "}
