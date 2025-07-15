@@ -332,7 +332,7 @@ export default function About() {
                     </div>
                   </div>
                   <CardContent className="md:w-2/3 p-8">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-loose">
                       We aim to make online learning{" "}
                       <strong>accessible, engaging, and impactful</strong> for
                       all age groups. Our courses focus on{" "}
