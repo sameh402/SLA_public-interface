@@ -325,13 +325,14 @@ export default function About() {
                 <div className="md:flex items-center">
                   <div className="md:w-1/3 bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 flex items-center justify-center">
                     <div className="text-center">
+                      <Target className="h-12 w-12 mx-auto mb-4 text-primary" />
                       <h3 className="text-2xl font-bold text-primary mb-2">
                         Our Mission
                       </h3>
                     </div>
                   </div>
                   <CardContent className="md:w-2/3 p-8">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-loose">
                       We aim to make online learning{" "}
                       <strong>accessible, engaging, and impactful</strong> for
                       all age groups. Our courses focus on{" "}
@@ -349,13 +350,14 @@ export default function About() {
                 <div className="md:flex items-center">
                   <div className="md:w-1/3 bg-gradient-to-br from-green-500/10 to-emerald-600/10 p-8 flex items-center justify-center md:order-2">
                     <div className="text-center">
+                      <Eye className="h-12 w-12 mx-auto mb-4 text-primary" />
                       <h3 className="text-2xl font-bold text-primary mb-2">
                         Our Vision
                       </h3>
                     </div>
                   </div>
                   <CardContent className="md:w-2/3 p-8 md:order-1">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-loose">
                       To be a <strong>trusted platform</strong> that transforms
                       education through <strong>innovation</strong>. We envision
                       a world where everyone can learn{" "}
@@ -372,13 +374,14 @@ export default function About() {
                 <div className="md:flex items-center">
                   <div className="md:w-1/3 bg-gradient-to-br from-orange-500/10 to-red-600/10 p-8 flex items-center justify-center">
                     <div className="text-center">
+                      <Heart className="h-12 w-12 mx-auto mb-4 text-primary" />
                       <h3 className="text-2xl font-bold text-primary mb-2">
                         Why We Exist
                       </h3>
                     </div>
                   </div>
                   <CardContent className="md:w-2/3 p-8">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-loose">
                       We believe in the{" "}
                       <strong>power of education to change lives</strong>.
                       That's why we design

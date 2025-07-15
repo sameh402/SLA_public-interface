@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
+import { useNavigate } from "react-router-dom";
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -36,6 +37,7 @@ import {
   FloatingElement,
 } from "@/components/AnimatedElements";
 import { useToast } from "@/hooks/use-toast";
+import { CountryCodeSelector } from "@/components/CountryCodeSelector";
 
 interface FormData {
   firstName: string;
@@ -51,6 +53,7 @@ interface FormData {
 export default function Contact() {
   const { t } = useI18n();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -118,20 +121,6 @@ export default function Contact() {
       description: t("contact.info.phone.description"),
       color: "from-green-500 to-emerald-500",
     },
-    {
-      icon: MapPin,
-      title: t("contact.info.location.title"),
-      value: t("contact.info.location.value"),
-      description: t("contact.info.location.description"),
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: Headphones,
-      title: t("contact.info.support.title"),
-      value: t("contact.info.support.value"),
-      description: t("contact.info.support.description"),
-      color: "from-orange-500 to-red-500",
-    },
   ];
 
   const courses = [
@@ -171,31 +160,27 @@ export default function Contact() {
 
           {/* Contact Info Cards */}
           <StaggeredList
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
             itemClassName="group"
             delay={100}
           >
             {contactInfo.map((info, index) => (
-              <MagneticButton key={index} intensity={5}>
-                <Card className="card-hover text-center bg-card/80 backdrop-blur-sm border-2 border-transparent hover:border-primary/20 h-full">
+              <div key={index}>
+                <Card className="text-center bg-card/80 backdrop-blur-sm border-2 border-transparent h-full">
                   <CardContent className="p-6">
                     <div
-                      className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center text-white`}
                     >
-                      <FloatingElement>
-                        <info.icon className="h-8 w-8" />
-                      </FloatingElement>
+                      <info.icon className="h-8 w-8" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
-                      {info.title}
-                    </h3>
+                    <h3 className="text-lg font-semibold mb-2">{info.title}</h3>
                     <p className="font-medium mb-1">{info.value}</p>
                     <p className="text-sm text-muted-foreground">
                       {info.description}
                     </p>
                   </CardContent>
                 </Card>
-              </MagneticButton>
+              </div>
             ))}
           </StaggeredList>
         </div>
@@ -280,35 +265,18 @@ export default function Contact() {
                         >
                           {t("contact.form.nationality")} *
                         </Label>
-                        <Select
+                        <Input
+                          id="nationality"
                           value={formData.nationality}
-                          onValueChange={(value) =>
-                            handleInputChange("nationality", value)
+                          onChange={(e) =>
+                            handleInputChange("nationality", e.target.value)
                           }
+                          placeholder={t(
+                            "contact.form.nationality.placeholder",
+                          )}
+                          className="h-11 bg-background/50 border-border/50 focus:border-primary/50 transition-all duration-300"
                           required
-                        >
-                          <SelectTrigger className="h-11 bg-background/50 border-border/50">
-                            <Globe className="mr-2 h-4 w-4" />
-                            <SelectValue
-                              placeholder={t(
-                                "contact.form.nationality.placeholder",
-                              )}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="egypt">🇪🇬 مصر</SelectItem>
-                            <SelectItem value="saudi">
-                              🇸🇦 المملكة العربية السعودية
-                            </SelectItem>
-                            <SelectItem value="uae">
-                              🇦🇪 الإمارات العربية المتحدة
-                            </SelectItem>
-                            <SelectItem value="jordan">🇯🇴 الأردن</SelectItem>
-                            <SelectItem value="lebanon">🇱🇧 لبنان</SelectItem>
-                            <SelectItem value="kuwait">🇰🇼 الكويت</SelectItem>
-                            <SelectItem value="other">🌍 أخرى</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        />
                       </div>
 
                       {/* Email */}
@@ -335,24 +303,13 @@ export default function Contact() {
                           {t("contact.form.phone")} *
                         </Label>
                         <div className="flex gap-2">
-                          <Select
+                          <CountryCodeSelector
                             value={formData.phoneCode}
                             onValueChange={(value) =>
                               handleInputChange("phoneCode", value)
                             }
-                          >
-                            <SelectTrigger className="w-32 h-11 bg-background/50 border-border/50">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="+20">🇪🇬 +20</SelectItem>
-                              <SelectItem value="+966">🇸🇦 +966</SelectItem>
-                              <SelectItem value="+971">🇦🇪 +971</SelectItem>
-                              <SelectItem value="+962">🇯🇴 +962</SelectItem>
-                              <SelectItem value="+961">🇱🇧 +961</SelectItem>
-                              <SelectItem value="+965">🇰🇼 +965</SelectItem>
-                            </SelectContent>
-                          </Select>
+                            className="w-32 h-11 bg-background/50 border-border/50"
+                          />
                           <Input
                             id="phone"
                             type="tel"
@@ -365,49 +322,6 @@ export default function Contact() {
                             required
                           />
                         </div>
-                      </div>
-
-                      {/* Course Interest */}
-                      <div className="space-y-2">
-                        <Label htmlFor="course" className="text-sm font-medium">
-                          {t("contact.form.course")}
-                        </Label>
-                        <Select
-                          value={formData.course}
-                          onValueChange={(value) =>
-                            handleInputChange("course", value)
-                          }
-                        >
-                          <SelectTrigger className="h-11 bg-background/50 border-border/50">
-                            <Users className="mr-2 h-4 w-4" />
-                            <SelectValue
-                              placeholder={t("contact.form.course.placeholder")}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="advanced web development">
-                              تطوير الويب المتقدم
-                            </SelectItem>
-                            <SelectItem value="digital marketing mastery">
-                              إتقان التسويق الرقمي
-                            </SelectItem>
-                            <SelectItem value="data science fundamentals">
-                              أساسيات علوم البيانات
-                            </SelectItem>
-                            <SelectItem value="ui/ux design principles">
-                              مبادئ تصميم UI/UX
-                            </SelectItem>
-                            <SelectItem value="business analytics">
-                              تحليلات الأعمال
-                            </SelectItem>
-                            <SelectItem value="mobile app development">
-                              تطوير تطبيقات الهاتف المحمول
-                            </SelectItem>
-                            <SelectItem value="general inquiry">
-                              استفسار عام
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
                       </div>
 
                       {/* Message */}
@@ -431,26 +345,24 @@ export default function Contact() {
                       </div>
 
                       {/* Submit Button */}
-                      <MagneticButton>
-                        <Button
-                          type="submit"
-                          className="w-full h-12 btn-professional text-lg"
-                          disabled={!isFormValid() || isSubmitting}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="mr-3 h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
-                              {t("contact.form.sending")}
-                            </>
-                          ) : (
-                            <>
-                              <Send className="mr-3 h-5 w-5" />
-                              {t("contact.form.submit")}
-                              <Heart className="ml-3 h-5 w-5" />
-                            </>
-                          )}
-                        </Button>
-                      </MagneticButton>
+                      <Button
+                        type="submit"
+                        className="w-full h-12 btn-professional text-lg"
+                        disabled={!isFormValid() || isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <div className="mr-3 h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
+                            {t("contact.form.sending")}
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-3 h-5 w-5" />
+                            {t("contact.form.submit")}
+                            <Heart className="ml-3 h-5 w-5" />
+                          </>
+                        )}
+                      </Button>
                     </form>
                   </CardContent>
                 </Card>
@@ -474,20 +386,15 @@ export default function Contact() {
                     <p className="text-muted-foreground mb-4">
                       {t("contact.whatsapp.description")}
                     </p>
-                    <MagneticButton>
-                      <Button
-                        className="w-full bg-green-500 hover:bg-green-600 text-white"
-                        onClick={() =>
-                          window.open(
-                            `https://wa.me/${whatsappNumber}`,
-                            "_blank",
-                          )
-                        }
-                      >
-                        <MessageCircle className="mr-2 h-4 w-4" />
-                        {t("contact.whatsapp.number")}
-                      </Button>
-                    </MagneticButton>
+                    <Button
+                      className="w-full bg-green-500 hover:bg-green-600 text-white"
+                      onClick={() =>
+                        window.open(`https://wa.me/${whatsappNumber}`, "_blank")
+                      }
+                    >
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      {t("contact.whatsapp.number")}
+                    </Button>
                   </CardContent>
                 </Card>
 
@@ -568,25 +475,32 @@ export default function Contact() {
               {t("contact.help.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <MagneticButton>
-                <Button
-                  size="lg"
-                  className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
-                >
-                  <Headphones className="mr-2 h-5 w-5" />
-                  {t("contact.help.support")}
-                </Button>
-              </MagneticButton>
-              <MagneticButton>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
-                >
-                  <AlertCircle className="mr-2 h-5 w-5" />
-                  {t("contact.help.faq")}
-                </Button>
-              </MagneticButton>
+              <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
+                onClick={() =>
+                  window.open(`https://wa.me/${whatsappNumber}`, "_blank")
+                }
+              >
+                <Headphones className="mr-2 h-5 w-5" />
+                {t("contact.help.support")}
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white/80 text-white hover:bg-white/20 px-8 py-4 text-lg backdrop-blur-sm"
+                onClick={() => {
+                  // First navigate to home page
+                  navigate("/");
+                  // Use hash navigation for scrolling
+                  setTimeout(() => {
+                    window.location.hash = "faq";
+                  }, 100);
+                }}
+              >
+                <AlertCircle className="mr-2 h-5 w-5" />
+                {t("contact.help.faq")}
+              </Button>
             </div>
           </AnimatedSection>
         </div>

@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Navigation } from "@/components/Navigation";
+import { CountryCodeSelector } from "@/components/CountryCodeSelector";
 
 // Country code options
 const countryCodes = [
@@ -29,12 +36,12 @@ export function SignUpPage() {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
-    email : ""
+    email: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -46,15 +53,19 @@ export function SignUpPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Your existing navigation can go here */}
-       <Navigation />
-      
+      <Navigation />
+
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-md mx-auto p-8 rounded-xl border bg-background shadow-lg">
-          <h1 className="text-2xl font-bold text-center mb-6">Create Your Account</h1>
-          
+          <h1 className="text-2xl font-bold text-center mb-6">
+            Create Your Account
+          </h1>
+
           {ageGroup === null ? (
             <div className="space-y-6">
-              <h2 className="text-lg font-medium text-center">Are you 16 years or older?</h2>
+              <h2 className="text-lg font-medium text-center">
+                Are you 16 years or older?
+              </h2>
               <div className="flex justify-center gap-4">
                 <Button
                   onClick={() => setAgeGroup("over16")}
@@ -74,8 +85,10 @@ export function SignUpPage() {
             </div>
           ) : ageGroup === "under16" ? (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <h2 className="text-lg font-medium text-center mb-4">Student Information</h2>
-              
+              <h2 className="text-lg font-medium text-center mb-4">
+                Student Information
+              </h2>
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>
@@ -113,21 +126,22 @@ export function SignUpPage() {
                 />
               </div>
 
-              
-                <div className="space-y-2">
-                    <Label htmlFor="Email">Email</Label>
+              <div className="space-y-2">
+                <Label htmlFor="Email">Email</Label>
                 <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
-              <h2 className="text-lg font-medium text-center mt-6 mb-4">Guardian Information</h2>
-              
+              <h2 className="text-lg font-medium text-center mt-6 mb-4">
+                Guardian Information
+              </h2>
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="guardianFirstName">Guardian First Name</Label>
@@ -154,21 +168,13 @@ export function SignUpPage() {
               <div className="space-y-2">
                 <Label htmlFor="phoneNumber">Guardian WhatsApp Number</Label>
                 <div className="flex gap-2">
-                  <Select
+                  <CountryCodeSelector
                     value={formData.countryCode}
-                    onValueChange={(value) => setFormData({...formData, countryCode: value})}
-                  >
-                    <SelectTrigger className="w-28">
-                      <SelectValue placeholder="Code" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {countryCodes.map((country) => (
-                        <SelectItem key={country.code} value={country.code}>
-                          {country.code} ({country.name})
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, countryCode: value })
+                    }
+                    className="w-32"
+                  />
                   <Input
                     id="phoneNumber"
                     name="phoneNumber"
@@ -212,8 +218,10 @@ export function SignUpPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Regular sign-up form for users 16+ */}
-              <h2 className="text-lg font-medium text-center mb-4">Create Your Account</h2>
-              
+              <h2 className="text-lg font-medium text-center mb-4">
+                Create Your Account
+              </h2>
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>
@@ -237,38 +245,29 @@ export function SignUpPage() {
                 </div>
               </div>
 
-                <div className="space-y-2">
-                    <Label htmlFor="Email">Email</Label>
+              <div className="space-y-2">
+                <Label htmlFor="Email">Email</Label>
                 <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
-
 
               {/* Add other fields for 16+ users as needed */}
               <div className="space-y-2">
                 <Label htmlFor="phoneNumber">WhatsApp Number</Label>
                 <div className="flex gap-2">
-                  <Select
+                  <CountryCodeSelector
                     value={formData.countryCode}
-                    onValueChange={(value) => setFormData({...formData, countryCode: value})}
-                  >
-                    <SelectTrigger className="w-28">
-                      <SelectValue placeholder="Code" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {countryCodes.map((country) => (
-                        <SelectItem key={country.code} value={country.code}>
-                          {country.code} ({country.name})
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, countryCode: value })
+                    }
+                    className="w-32"
+                  />
                   <Input
                     id="phoneNumber"
                     name="phoneNumber"
@@ -280,7 +279,6 @@ export function SignUpPage() {
                   />
                 </div>
               </div>
-
 
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
